@@ -24,7 +24,16 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/no-empty-function":[
+          "error",
+          {
+             "allow":[
+                "constructors"
+             ]
+          }
+       ]
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

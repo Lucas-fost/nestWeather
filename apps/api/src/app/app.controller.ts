@@ -24,17 +24,19 @@ export class AppController {
     return this.appService.getCity(params.id)
   }
   
-  @Get(':long/:lat')
+  @Get('weather/:long/:lat')
   getCurrent(@Res() res, @Param() params): void {
     this.weatherService.getLocation(params.long, params.lat).subscribe(weather => {
-      res.json(weather);
+      console.log(weather.data)
+      if(weather) res.send(weather.data);
     })
   }
   
-  @Get(':id')
+  @Get('weather/:id')
   getCity(@Res() res, @Param() params): void {
     this.weatherService.getCity(params.id).subscribe(weather => {
-      res.json(weather);
+      console.log(weather)
+      if(weather) res.json(weather);
     })
   }
 }

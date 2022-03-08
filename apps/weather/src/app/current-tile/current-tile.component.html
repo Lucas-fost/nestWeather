@@ -1,0 +1,11 @@
+<p>current-tile works!</p>
+
+<div *ngIf="currentWeather">
+  <h1>{{currentWeather.current.weather[0].main}}</h1>
+  <h2>{{currentWeather.current.weather[0].description}}</h2>
+  <h3>Feels like: {{currentWeather.current.feels_like}}℃</h3>
+</div>
+
+<div *ngIf="!currentWeather">
+  <h1>Loading...</h1>
+</div>
