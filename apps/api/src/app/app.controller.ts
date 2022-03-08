@@ -18,6 +18,13 @@ export class AppController {
   getCities(): City[] {
     return this.appService.getCities()
   }
+
+  @Get('cities/:long/:lat')
+  getClosestCity(@Res() res, @Param() params) {
+    return this.weatherService.getCityFromLocation(params.long, params.lat).subscribe(city => {
+      if(city) res.send(city.data);
+    })
+  }
   
   @Get('cities/:id')
   getCityData(@Param() params): City {
