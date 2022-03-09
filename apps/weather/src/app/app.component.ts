@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from './api.service';
 import { City } from '@weather/api-interfaces';
 
 @Component({
@@ -8,18 +8,28 @@ import { City } from '@weather/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  // hello$ = this.http.get<City[]>('/api/cities');
   hello$ = null;
   location!: GeolocationPosition;
 
+  currentList: City[] = [];
+
   ngOnInit() {
     navigator.geolocation.getCurrentPosition((res) => {
-      console.log(res)
       this.location = res
     }, (res) => {
       console.log(res)
     }, {timeout: 10000});
+
+    this.api.getCurrentList().subscribe(list => {
+      this.currentList = list;
+    })
   }
 
-  constructor(private http: HttpClient) {}
+  onChange(city: City): void {
+    this.api.addCity(city)
+    console.log(this.currentList)
+  }
+
+
+  constructor(private api: ApiService) {}
 }

@@ -24,7 +24,15 @@
             "prefix": "weather",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@typescript-eslint/no-empty-function":[
+          "error",
+          {
+             "allow":[
+                "constructors"
+             ]
+          }
+       ]
       }
     },
     {

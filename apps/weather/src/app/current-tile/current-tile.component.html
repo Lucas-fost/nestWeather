@@ -1,9 +1,11 @@
 <div *ngIf="currentWeather" class="tile">
-  <h1>{{currentCity}}</h1>
-  <h2>{{currentWeather.current.weather[0].main}}</h2>
-  <img src="{{weatherIcon}}" />
-  <h3>{{currentWeather.current.weather[0].description}}</h3>
-  <h4>Feels like: {{currentWeather.current.feels_like}}℃</h4>
+  <div class="tile-inner">
+    <h1>{{ currentCity }}</h1>
+    <h2>{{ currentWeather.current.weather[0].main }}</h2>
+    <img src="{{ weatherIcon }}" />
+    <h3>{{ currentWeather.current.weather[0].description }}</h3>
+    <h4>Feels like: {{ currentWeather.current.feels_like }}℃</h4>
+  </div>
 </div>
 
 <div *ngIf="!currentWeather">

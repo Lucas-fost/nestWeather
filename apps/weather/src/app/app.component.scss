@@ -1,0 +1,11 @@
+.tiles {
+  background-color: aliceblue;
+  width: 100%;
+  min-height: 100%;
+  padding: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+

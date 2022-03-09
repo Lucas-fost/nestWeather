@@ -1,1 +1,13 @@
-<p>tile works!</p>
+<div *ngIf="currentWeather" class="tile">
+  <div class="tile-inner">
+    <h1>{{ currentCity.name }}</h1>
+    <h2>{{ currentWeather.current.weather[0].main }}</h2>
+    <img src="{{ weatherIcon }}" />
+    <h3>{{ currentWeather.current.weather[0].description }}</h3>
+    <h4>Feels like: {{ currentWeather.current.feels_like }}℃</h4>
+  </div>
+</div>
+
+<div *ngIf="!currentWeather">
+  <h1>Loading...</h1>
+</div>

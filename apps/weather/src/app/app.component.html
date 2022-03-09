@@ -1,4 +1,6 @@
-<div style="text-align: center">
-  <h1>Welcome to weather!</h1>
+
+<div class="tiles">
+  <weather-list class="list" (cityChange)="onChange($event)"></weather-list>
+  <weather-current-tile [loc]="location"></weather-current-tile>
+  <weather-tile *ngFor="let city of currentList" [currentCity]="city"></weather-tile>
 </div>
-<weather-current-tile [loc]="location"></weather-current-tile>

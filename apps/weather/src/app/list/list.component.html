@@ -1,1 +1,13 @@
-<p>list works!</p>
+<div 
+  [class]="expanded ? 'list' : 'list__hidden'"
+  (click)="onExpandClick(this, $event)">
+  <div class="list-close" (click)="onCloseClick()">
+    <h1 (click)="onCloseClick()">✖</h1>
+  </div>
+  <div class="list-filter">
+    <input type="text" placeholder="filter" [(ngModel)]="filterText" (ngModelChange)="filter()">
+  </div>
+  <div *ngFor="let city of cities" class="list-city" (click)="onCityClick(city)">
+    <h2>{{city.name}}</h2>
+  </div>
+</div>
