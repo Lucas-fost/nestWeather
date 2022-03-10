@@ -1,13 +1,24 @@
-<div 
+<div
   [class]="expanded ? 'list' : 'list__hidden'"
-  (click)="onExpandClick(this, $event)">
+  (click)="onExpandClick(this, $event)"
+>
   <div class="list-close" (click)="onCloseClick()">
     <h1 (click)="onCloseClick()">✖</h1>
   </div>
   <div class="list-filter">
-    <input type="text" placeholder="filter" [(ngModel)]="filterText" (ngModelChange)="filter()">
+    <input
+      type="text"
+      placeholder="filter"
+      [(ngModel)]="filterText"
+      (ngModelChange)="filter()"
+    />
   </div>
-  <div *ngFor="let city of cities" class="list-city" (click)="onCityClick(city)">
-    <h2>{{city.name}}</h2>
+  <div
+    *ngFor="let city of cities"
+    class="list-city"
+    (click)="onCityClick(city)"
+    [class]="city.state === 'select' ? 'list-city__green' : ''"
+  >
+    <h2>{{ city.name }}</h2>
   </div>
 </div>

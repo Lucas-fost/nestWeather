@@ -12,6 +12,7 @@ export class ListComponent implements OnInit {
   cities: City[] = [];
   citiesCopy: City[] = [];
   filterText = '';
+  currentList: City[] = [];
 
   @Output() cityChange = new EventEmitter<City>();
 
@@ -21,6 +22,9 @@ export class ListComponent implements OnInit {
     this.api.getCities().subscribe(cities => {
       this.cities = cities
       this.citiesCopy = cities
+    })
+    this.api.getCurrentList().subscribe(list => {
+      this.currentList = list
     })
   }
 
@@ -34,6 +38,19 @@ export class ListComponent implements OnInit {
 
   onCityClick(city: City): void {
     this.cityChange.emit(city)
+    console.log(this.currentList)
+
+    this.cities.map(i => {
+      i.state = ''
+    })
+
+    this.currentList.map(e => {
+      this.cities.map(i => {
+        if(i.name === e.name) {
+          i.state = 'select'
+        }
+      })
+    })
   }
 
   filter(): void {

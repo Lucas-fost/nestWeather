@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
 
   onChange(city: City): void {
     this.api.addCity(city)
-    console.log(this.currentList)
   }
 
 

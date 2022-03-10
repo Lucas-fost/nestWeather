@@ -53,6 +53,11 @@
     &:hover {
       box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
+
+    &__green {
+      @extend .list-city;
+      background-color: rgba(120, 214, 151, 0.664);;
+    }
   }
 
   &-filter {
