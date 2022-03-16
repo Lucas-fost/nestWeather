@@ -13,6 +13,8 @@ export class CurrentTileComponent implements OnInit, OnChanges {
   currentWeather!: WeatherResp;
   currentCity = {};
   weatherIcon = '';
+  expanded= false;
+  hourly = [{}];
 
   constructor(private api: ApiService) {}
 
@@ -25,6 +27,13 @@ export class CurrentTileComponent implements OnInit, OnChanges {
 
       this.api.getCurrent(long, lat).subscribe(res => {
         this.currentWeather = res;
+        res.hourly.map((e, i) => {
+          if(i < 12) {
+            const date = new Date(e.dt * 1000);
+            this.hourly.push({ x: e.dt * 1000, y: e.temp });
+          }
+        })
+        console.log(this.hourly)
         this.weatherIcon = `https://openweathermap.org/img/wn/${res.current.weather[0].icon}@2x.png`;
       })
 
@@ -36,5 +45,8 @@ export class CurrentTileComponent implements OnInit, OnChanges {
     }
   }
 
+  handleTileClick(): void {
+    this.expanded = !this.expanded;
+ }
 
 }

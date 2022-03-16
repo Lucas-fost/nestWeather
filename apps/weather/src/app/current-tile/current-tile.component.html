@@ -1,10 +1,18 @@
 <div *ngIf="currentWeather" class="tile">
-  <div class="tile-inner">
+  <div
+    (click)="handleTileClick()"
+    [class]="expanded ? 'tile-inner__expanded' : 'tile-inner'"
+  >
     <h1>{{ currentCity }}</h1>
-    <h2>{{ currentWeather.current.weather[0].main }}</h2>
-    <img src="{{ weatherIcon }}" />
-    <h3>{{ currentWeather.current.weather[0].description }}</h3>
-    <h4>Feels like: {{ currentWeather.current.feels_like }}℃</h4>
+    <div *ngIf="!expanded">
+      <h2>{{ currentWeather.current.weather[0].main }}</h2>
+      <img src="{{ weatherIcon }}" />
+      <h3>{{ currentWeather.current.weather[0].description }}</h3>
+      <h4>Feels like: {{ currentWeather.current.feels_like }}℃</h4>
+    </div>
+    <div *ngIf="expanded">
+      <weather-chart [info]="hourly"></weather-chart>
+    </div>
   </div>
 </div>
 
