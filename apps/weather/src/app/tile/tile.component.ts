@@ -16,8 +16,6 @@ export class TileComponent implements OnInit {
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
-    console.log(this.currentCity);
-
     const long: number = this.currentCity.coord.lon;
     const lat: number = this.currentCity.coord.lat;
 

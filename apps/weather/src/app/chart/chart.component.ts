@@ -16,7 +16,7 @@ Chart.register(...registerables);
   styleUrls: ['./chart.component.scss'],
 })
 export class ChartComponent implements AfterViewInit {
-  @Input() info!: any;
+  @Input() info!: Point[];
   @ViewChild('chart')
   private chartRef!: ElementRef;
   private chart!: Chart;
@@ -47,11 +47,19 @@ export class ChartComponent implements AfterViewInit {
               unit: 'hour',
             },
           },
+          y: {
+            ticks: {
+              callback: (value, index, ticks) => {
+                return `${value}℃`;
+              },
+            },
+          },
         },
         datasets: {
           line: {
             backgroundColor: '#ff6363cc',
             borderColor: '#fa6363cc',
+            cubicInterpolationMode: 'monotone',
           },
         },
         plugins: {

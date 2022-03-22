@@ -34,7 +34,6 @@ export class AppController {
   @Get('weather/:long/:lat')
   getCurrent(@Res() res, @Param() params): void {
     this.weatherService.getLocation(params.long, params.lat).subscribe(weather => {
-      console.log(weather.data)
       if(weather) res.send(weather.data);
     })
   }
@@ -42,7 +41,6 @@ export class AppController {
   @Get('weather/:id')
   getCity(@Res() res, @Param() params): void {
     this.weatherService.getCity(params.id).subscribe(weather => {
-      console.log(weather)
       if(weather) res.json(weather);
     })
   }

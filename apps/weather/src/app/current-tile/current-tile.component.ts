@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { WeatherResp } from '@weather/api-interfaces';
 import { ApiService } from '../api.service';
+import { Point } from 'chart.js';
 
 @Component({
   selector: 'weather-current-tile',
@@ -14,7 +15,7 @@ export class CurrentTileComponent implements OnInit, OnChanges {
   currentCity = {};
   weatherIcon = '';
   expanded= false;
-  hourly = [{}];
+  hourly: Point[] = [];
 
   constructor(private api: ApiService) {}
 
@@ -29,11 +30,9 @@ export class CurrentTileComponent implements OnInit, OnChanges {
         this.currentWeather = res;
         res.hourly.map((e, i) => {
           if(i < 12) {
-            const date = new Date(e.dt * 1000);
             this.hourly.push({ x: e.dt * 1000, y: e.temp });
           }
         })
-        console.log(this.hourly)
         this.weatherIcon = `https://openweathermap.org/img/wn/${res.current.weather[0].icon}@2x.png`;
       })
 
