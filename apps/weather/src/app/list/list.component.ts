@@ -8,11 +8,11 @@ import { City } from '@weather/api-interfaces';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  expanded = false;
-  cities: City[] = [];
-  citiesCopy: City[] = [];
-  filterText = '';
-  currentList: City[] = [];
+  expanded!: boolean;
+  cities!: City[];
+  citiesCopy!: City[];
+  filterText!: string;
+  currentList!: City[];
 
   @Output() cityChange = new EventEmitter<City>();
 

@@ -10,7 +10,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  list: City[] = [];
+  list!: City[];
 
   findNearest(long: number, lat: number): Observable<any> {
     return this.http.get(`api/cities/${long}/${lat}`)

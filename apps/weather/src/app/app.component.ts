@@ -8,10 +8,9 @@ import { City } from '@weather/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  hello$ = null;
   location!: GeolocationPosition;
 
-  currentList: City[] = [];
+  currentList!: City[];
 
   ngOnInit() {
     navigator.geolocation.getCurrentPosition((res) => {
@@ -28,7 +27,6 @@ export class AppComponent implements OnInit {
   onChange(city: City): void {
     this.api.addCity(city)
   }
-
 
   constructor(private api: ApiService) {}
 }

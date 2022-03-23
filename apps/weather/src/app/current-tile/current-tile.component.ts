@@ -12,10 +12,10 @@ export class CurrentTileComponent implements OnInit, OnChanges {
   @Input() loc!: GeolocationPosition;
 
   currentWeather!: WeatherResp;
-  currentCity = {};
-  weatherIcon = '';
-  expanded= false;
-  hourly: Point[] = [];
+  currentCity!: string;
+  weatherIcon!: string;
+  expanded!: boolean;
+  hourly!: Point[];
 
   constructor(private api: ApiService) {}
 

@@ -11,7 +11,7 @@ import { City } from '@weather/api-interfaces';
 export class TileComponent implements OnInit {
   currentWeather!: WeatherResp;
   @Input() currentCity!: City;
-  weatherIcon = '';
+  weatherIcon!: string;
 
   constructor(private api: ApiService) {}
 
